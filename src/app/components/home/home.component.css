@@ -1,0 +1,24 @@
+.file-input {
+  display: none;
+}
+
+.icon-display {
+  transform: scale(1);
+}
+
+.small-icon-button {
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  background-color:black;
+  vertical-align: bottom !important;
+
+  .mat-icon {
+     width: 18px !important;
+     height: 18px !important;
+     line-height: 18px !important;
+  }
+  .material-icons {
+     font-size: 18px !important;
+  }
+}

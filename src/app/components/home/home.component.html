@@ -1,0 +1,25 @@
+<h1>
+  <strong><a href="{{link}}">{{ mainTitle }}</a></strong>
+</h1>
+<h2>{{subtitle}}</h2>
+<div class="container mb-5">
+    <div class="border border-secondary rounded p-3 mt-3 text-center">
+      <input type="file" class="file-input" (change)="fileSelected($event)" #fileUpload>
+      <img src={{imageUrl}}>
+      <div class="file-upload mb-3 mt-2">
+        {{fileName || "No file uploaded yet."}}
+        <button mat-mini-fab color="primary" class="small-icon-button" title="Upload an image"
+          (click)="fileUpload.click()">
+          <mat-icon class="icon-display mb-2">attach_file</mat-icon>
+        </button>
+      </div>
+    </div>
+</div>
+
+<p>{{text1}}</p>
+<p>{{text2}}</p>
+<p>{{text3}}</p>
+<p>{{text4}}</p>
+<p><span style="font-weight: bold;">OPEN TO PUBLIC</span>{{text5}}</p>
+<p><span style="font-weight: bold;">AWARDS CEREMONY</span>{{text6}}</p>
+<p><span style="font-weight: bold;">REMOVE PROJECTS by</span>{{text7}}</p>
