@@ -25,15 +25,15 @@
         <header class="mb-auto">
             <div>
                 <h3 class="float-md-start mb-0"><a class="nav-link active text-white" onclick="location.reload()"
-                        href="#">RespiraScan</a></h3>
+                        href="#">RespiraScan - Illness Detection</a></h3>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link" href="https://edu.fcps.org/ums/home">Urbana Middle School</a>
                 </nav>
             </div>
         </header>
         <main class="px-3">
-            <div id='webcam-container'></div>
-            <div id='label-container'></div>
+            <div id='webcam-container' class="float-start mr-3 pr-3"></div>
+            <div id='label-container' class="ml-5 pl-5"></div>
             <div>
                 <button type='button' id="startBtn" class="btn btn-dark" onclick='init()'
                     title="Click the button to start">
@@ -51,7 +51,7 @@
         </footer>
     </div>
     <script type="text/javascript">
-        const URL = 'https://teachablemachine.withgoogle.com/models/VkwNFF7K9/';
+        const URL = 'https://teachablemachine.withgoogle.com/models/IbgOlGs9t/';
 
         let model, webcam, labelContainer, maxPredictions;
 
@@ -107,11 +107,13 @@
             } else {
                 prediction = await model.predict(webcam.canvas);
             }
+            let classPredictionString = '<table class="ml-3"><tbody>';
             for (let i = 0; i < maxPredictions; i++) {
-                let className = prediction[i].className === 'Class 2' ? 'Positive' : 'Negative'
-                const classPrediction = className + ': ' + prediction[i].probability.toFixed(2);
-                labelContainer.childNodes[i].innerHTML = classPrediction;
+                classPredictionString = classPredictionString + '<tr><td>' + prediction[i].className + ':</td>';
+                classPredictionString = classPredictionString + '<td>' + prediction[i].probability.toFixed(2) + '</td></tr>';
             }
+            classPredictionString = classPredictionString + '</tbody></table>';
+            labelContainer.childNodes[0].innerHTML = classPredictionString;
         }
 
         function reset() {
